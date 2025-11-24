@@ -6,13 +6,15 @@ public abstract class Pessoa {
     private String cpf;
     private String telefone;
     private String email;
+    private String endereco; //Pode ser dividido em outras variaveis como: cidade, bairro, rua e número (mas talvez fique exagerado)
 
-    public Pessoa(int id, String nome, String cpf, String telefone, String email) {
+    public Pessoa(int id, String nome, String cpf, String telefone, String email, String endereco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
+        this.endereco = endereco;
     }
 
     public void exibirInformacoes(){
@@ -23,7 +25,8 @@ public abstract class Pessoa {
                 CPF: %s
                 Telefone: %s
                 Email: %s
-                """, getId(), getNome(), getCpf(), getTelefone(), getEmail());
+                Endereco: %s
+                """, getId(), getNome(), getCpf(), getTelefone(), getEmail(), getEndereco());
     }
 
     public int getId() {
@@ -64,5 +67,13 @@ public abstract class Pessoa {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
