@@ -1,6 +1,8 @@
 package br.com.hospital.entidades;
 
-public class Paciente extends Pessoa {
+import br.com.hospital.interfaces.Validavel;
+
+public class Paciente extends Pessoa implements Validavel {
     private int idade;
     private String historicoClinico;
 
@@ -15,7 +17,7 @@ public class Paciente extends Pessoa {
         super.exibirInformacoes();
         System.out.printf("""
                 
-                Dados clínicos:
+                Dados Clínicos:
                 Idade: %d
                 Histórico Clínico: %s
                 """, getIdade(), getHistoricoClinico());
@@ -37,4 +39,44 @@ public class Paciente extends Pessoa {
         this.historicoClinico = historicoClinico;
     }
 
+    @Override
+    public boolean validar() {
+        if(getNome() == null || getNome().isBlank()){
+            return false;
+        }
+        
+        if(getCpf() == null || getCpf().length() != 11){
+            return false;
+        }
+
+        if(idade <= 0 || idade > 120){
+            return false;
+        }
+
+        if(historicoClinico == null || historicoClinico.isBlank()){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String getMensagemValidacao() {
+        if (getNome() == null || getNome().isBlank()) {
+            return "Nome não pode ser vazio.";
+        }
+
+        if (getCpf() == null || getCpf().length() != 11) {
+            return "CPF inválido. Deve conter 11 dígitos.";
+        }
+
+        if (idade <= 0 || idade > 120) {
+            return "Idade inválida.";
+        }
+
+        if (historicoClinico == null || historicoClinico.isBlank()) {
+            return "Histórico clínico não pode ser vazio.";
+        }
+
+        return "Paciente válido.";
+    }
 }
