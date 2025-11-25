@@ -1,17 +1,20 @@
 package br.com.hospital.entidades;
 
-public class Medico extends Pessoa{
+import br.com.hospital.interfaces.Validavel;
+
+public class Medico extends Pessoa implements Validavel {
     private String crm;
     private String especialidade;
 
-    public Medico(int id,String nome, String cpf, String telefone, String email, String endereco, String crm, String especialidade) {
+    public Medico(int id, String nome, String cpf, String telefone, String email, String endereco,
+                  String crm, String especialidade) {
         super(id, nome, cpf, telefone, email, endereco);
         this.crm = crm;
         this.especialidade = especialidade;
     }
 
     @Override
-    public void exibirInformacoes(){
+    public void exibirInformacoes() {
         super.exibirInformacoes();
         System.out.printf("""
                 
@@ -35,5 +38,53 @@ public class Medico extends Pessoa{
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
+    }
+
+    @Override
+    public boolean validar() {
+        if (getNome() == null || getNome().isBlank()) {
+            return false;
+        }
+
+        if (getCpf() == null || getCpf().length() != 11) {
+            return false;
+        }
+
+        if (crm == null || crm.isBlank()) {
+            return false;
+        }
+
+        if (crm.length() < 4 || crm.length() > 10) {
+            return false;
+        }
+
+        if (especialidade == null || especialidade.isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String getMensagemValidacao() {
+        if (getNome() == null || getNome().isBlank()) {
+            return "Nome inválido.";
+        }
+
+        if (getCpf() == null || getCpf().length() != 11) {
+            return "CPF inválido. Deve conter 11 dígitos.";
+        }
+
+        if (crm == null || crm.isBlank()) {
+            return "CRM não pode ser vazio.";
+        }
+
+        if (crm.length() < 4 || crm.length() > 10) {
+            return "CRM inválido. Deve ter entre 4 e 10 caracteres.";
+        }
+
+        if (especialidade == null || especialidade.isBlank()) {
+            return "Especialidade não pode ser vazia.";
+        }
+        return "Médico válido.";
     }
 }
