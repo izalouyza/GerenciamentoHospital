@@ -28,16 +28,6 @@ O objetivo é aplicar na prática os principais conceitos de POO, como classes, 
 
 ---
 
-## Aprendizados Adquiridos
-
-Este projeto permitiu a aplicação prática de conceitos como:
-- Abstração;
-- Encapsulamento;
-- Herança;
-- Polimorfismo.
-  
----
-
 ## Funcionalidades do Sistema
 
 | Função     | Descrição                                                                                         |
