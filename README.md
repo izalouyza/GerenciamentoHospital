@@ -1,0 +1,113 @@
+# Gerenciamento Hospitalar
+
+Repositório contendo o projeto desenvolvido durante a 3ª unidade da disciplina **Programação Orientada a Objetos (PEX0130)**.  
+
+O objetivo é aplicar na prática os principais conceitos de POO, como classes, herança, interfaces, polimorfismo e encapsulamento, por meio da implementação de um sistema simples de gerenciamento hospitalar.
+
+![Linguagem](https://img.shields.io/badge/Linguagem-Java-red)
+![Último commit](https://img.shields.io/github/last-commit/izalouyza/GerenciamentoHospitalar)
+
+---
+
+## Funcionalidades Principais do Projeto
+
+---
+
+## 👥 Autores
+
+👨‍🏫 **Professor:** [Bruno Borges da Silva](https://github.com/silv4bufersa)
+
+👩‍🎓 **Discentes:**  
+- [Alex Bruno Duarte](https://github.com/alexb7z)
+- [Harley Lucas de Souza Batista](https://github.com/harleylsb)
+- [Izadora Louyza Silva Figueiredo](https://github.com/izalouyza)
+- [Leonardo Augusto Silva de Souza](https://github.com/LeonardAugusto)
+- [Lívian Maria Lucena Gomes Pinheiro](https://github.com/livianlucena)
+- [Marcelo Caat Amaral do Nascimento](https://github.com/MarceloCaat)
+- [Maria Vitória Fernandes Rocha](https://github.com/tivitoriarocha)
+
+---
+
+## Aprendizados Adquiridos
+
+Este projeto permitiu a aplicação prática de conceitos como:
+- Abstração;
+- Encapsulamento;
+- Herança;
+- Polimorfismo.
+  
+---
+
+## Funcionalidades do Sistema
+
+| Função     | Descrição                                                                                         |
+|-------------|---------------------------------------------------------------------------------------------------|
+
+---
+
+## Funcionamento do Sistema
+
+O usuário interage com o sistema via menu no terminal:
+
+```text
+
+```
+#### Menu Principal do Sistema:
+
+
+---
+
+## Estrutura de Pastas
+
+```bash
+GerenciamentoHospitalar/
+├── src/
+│   └── br/
+│       └── com/
+│           └── hospital/
+│               ├── entidades/
+│               │   ├── Funcionario.java
+│               │   ├── Medico.java
+│               │   ├── Paciente.java
+│               │   └── Pessoa.java
+│               ├── interfaces/
+│               │   ├── Acessavel.java
+│               │   ├── Agendavel.java
+│               │   ├── Gerenciavel.java
+│               │   ├── Identificavel.java
+│               │   └── Validavel.java
+│               └── Main.java
+└── README.md
+```
+
+---
+
+## Como Compilar e Executar
+
+1. Certifique-se de ter o Java instalado.
+
+2. Clone este repositório:
+
+```bash
+git clone https://github.com/izalouyza/GerenciamentoHospitalar
+```
+
+3. Acesse a pasta do projeto:
+
+```bash
+cd GerenciamentoHospitalar/src/br/com/hospital
+```
+
+4. Compile os arquivos  `.java`:
+
+```bash
+javac */*.java Main.java
+```
+
+5. Execute o programa:
+
+```bash
+java Main
+```
+---
+
