@@ -1,12 +1,14 @@
 package br.com.hospital.entidades;
 
-public abstract class Pessoa {
-    private int  id;
+import br.com.hospital.interfaces.Identificavel;
+
+public abstract class Pessoa implements Identificavel {
+    private int id;
     private String nome;
     private String cpf;
     private String telefone;
     private String email;
-    private String endereco; //Pode ser dividido em outras variaveis como: cidade, bairro, rua e número (mas talvez fique exagerado)
+    private String endereco;
 
     public Pessoa(int id, String nome, String cpf, String telefone, String email, String endereco) {
         this.id = id;
@@ -17,7 +19,12 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    public void exibirInformacoes(){
+    @Override
+    public String getIdentificador() {
+        return String.valueOf(id);
+    }
+
+    public void exibirInformacoes() {
         System.out.printf("""
                 Dados pessoais:
                 Id: %d
@@ -26,7 +33,8 @@ public abstract class Pessoa {
                 Telefone: %s
                 Email: %s
                 Endereco: %s
-                """, getId(), getNome(), getCpf(), getTelefone(), getEmail(), getEndereco());
+                """,
+                id, nome, cpf, telefone, email, endereco);
     }
 
     public int getId() {
@@ -50,7 +58,7 @@ public abstract class Pessoa {
     }
 
     public void setCpf(String cpf) {
-
+        this.cpf = cpf;
     }
 
     public String getTelefone() {
