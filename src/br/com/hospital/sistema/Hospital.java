@@ -49,11 +49,12 @@ public class Hospital implements Gerenciavel<Pessoa> {
 
     @Override
     public boolean editar(String identificador, Pessoa novoElemento) {
+
         return false;
     }
 
     @Override
     public boolean remover(String identificador) {
-        return false;
+        return pessoasRegistradas.removeIf(pessoaRemovivel -> pessoaRemovivel.getCpf().equals(identificador));
     }
 }
