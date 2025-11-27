@@ -1,5 +1,6 @@
 package br.com.hospital.sistema;
 
+import br.com.hospital.entidades.Medico;
 import br.com.hospital.entidades.Pessoa;
 import br.com.hospital.interfaces.Gerenciavel;
 
@@ -31,6 +32,18 @@ public class Hospital implements Gerenciavel<Pessoa> {
 
     @Override
     public Pessoa buscar(String identificador) {
+        for (Pessoa pessoaBuscar : pessoasRegistradas) {
+            if (pessoaBuscar.getCpf().equals(identificador)) {
+                pessoaBuscar.exibirInformacoes();
+                return pessoaBuscar;
+            }
+            if (pessoaBuscar instanceof Medico){
+                if (((Medico) pessoaBuscar).getCrm().equals(identificador)){
+                    pessoaBuscar.exibirInformacoes();
+                    return pessoaBuscar;
+                }
+            }
+        }
         return null;
     }
 
