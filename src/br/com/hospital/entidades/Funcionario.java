@@ -3,13 +3,12 @@ package br.com.hospital.entidades;
 public class Funcionario extends Pessoa {
     private String cargo;
     private String setor;
-    private String nivelAcesso;
+    private String nivelAcesso; // Ver se é necessário o uso de nivel Acesso aqui e em Pessoa :D
 
-    public Funcionario(int id, String nome, String cpf, String telefone, String email, String endereco, String cargo, String setor, String nivelAcesso) {
-        super(id, nome, cpf, telefone, email, endereco);
+    public Funcionario(int id, String nome, String cpf, String telefone, String email, String endereco,String senha, String nivelAcesso, String cargo, String setor) {
+        super(id, nome, cpf, telefone, email, endereco, senha, nivelAcesso);
         this.cargo = cargo;
         this.setor = setor;
-        this.nivelAcesso = nivelAcesso;
     }
 
     //getters e setters
