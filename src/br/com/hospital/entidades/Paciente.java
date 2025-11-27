@@ -6,8 +6,8 @@ public class Paciente extends Pessoa implements Validavel {
     private int idade;
     private String historicoClinico;
 
-    public Paciente(int id, String nome, String cpf, String telefone, String email, String endereco, int idade, String historicoClinico) {
-        super(id, nome, cpf, telefone, email, endereco);
+    public Paciente(int id, String nome, String cpf, String telefone, String email, String endereco,String senha, String nivelAcesso, int idade, String historicoClinico) {
+        super(id, nome, cpf, telefone, email, endereco,senha,nivelAcesso);
         this.idade = idade;
         this.historicoClinico = historicoClinico;
     }
