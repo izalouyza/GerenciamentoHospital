@@ -1,5 +1,8 @@
 package br.com.hospital.utilitarios;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Utilitarios {
 
     // Gera ID's
@@ -14,9 +17,20 @@ public class Utilitarios {
         return "ID-" + gerarIdIncremental();
     }
 
+    // Compara ID's
+    public static boolean compararIdentificadores(String id1, String id2) {
+        if (id1 == null || id2 == null) return false;
+        return id1.equalsIgnoreCase(id2);
+    }
+
     // Verifica texto vazio
     public static boolean textoNaoVazio(String txt) {
         return txt != null && !txt.isBlank();
+    }
+
+    // Verifica lista vazia
+    public static boolean listaVazia(List<?> lista) {
+        return lista == null || lista.isEmpty();
     }
 
     // Valida e-mail
@@ -53,6 +67,7 @@ public class Utilitarios {
         }
 
         String num = cpf.replaceAll("\\D", "");
+
         if (num.length() != 11) {
             return false;
         }
@@ -95,4 +110,5 @@ public class Utilitarios {
             return false;
         }
     }
+
 }
