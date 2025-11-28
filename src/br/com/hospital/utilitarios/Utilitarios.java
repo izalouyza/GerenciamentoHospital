@@ -45,4 +45,54 @@ public class Utilitarios {
         String digitos = telefone.replaceAll("\\D", "");
         return digitos.matches("\\d{8,13}");
     }
+
+    // Valida o CPF
+    public static boolean cpfValido(String cpf) {
+        if (cpf == null) {
+            return false;
+        }
+
+        String num = cpf.replaceAll("\\D", "");
+        if (num.length() != 11) {
+            return false;
+        }
+
+        // rejeita sequências como 00000000000
+        if (num.chars().distinct().count() == 1){
+            return false;
+        }
+
+        try {
+            int soma = 0;
+            for (int i = 0; i < 9; i++) {
+                soma += Character.getNumericValue(num.charAt(i)) * (10 - i);
+            }
+
+            int dig1 = 11 - (soma % 11);
+
+            if (dig1 >= 10){
+                dig1 = 0;
+            }
+
+            if (dig1 != Character.getNumericValue(num.charAt(9))){
+                return false;
+            }
+
+            soma = 0;
+            for (int i = 0; i < 10; i++) {
+                soma += Character.getNumericValue(num.charAt(i)) * (11 - i);
+            }
+
+            int dig2 = 11 - (soma % 11);
+
+            if (dig2 >= 10){
+                dig2 = 0;
+            }
+
+            return dig2 == Character.getNumericValue(num.charAt(10));
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
