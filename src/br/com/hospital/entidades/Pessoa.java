@@ -1,5 +1,6 @@
 package br.com.hospital.entidades;
 
+import br.com.hospital.exceptions.PessoaException;
 import br.com.hospital.interfaces.Identificavel;
 import br.com.hospital.interfaces.Acessavel;
 
@@ -13,7 +14,11 @@ public abstract class Pessoa implements Identificavel, Acessavel {
     private String senha;
     private String nivelAcesso;
 
-    public Pessoa(int id, String nome, String cpf, String telefone, String email, String endereco, String senha, String nivelAcesso){
+    public Pessoa(int id, String nome, String cpf, String telefone, String email, String endereco, String senha, String nivelAcesso) throws PessoaException {
+        if (cpf == null || cpf.length() != 11) {
+            throw new PessoaException("CPF inválido!");
+        }
+
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;

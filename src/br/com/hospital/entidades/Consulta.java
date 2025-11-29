@@ -1,5 +1,6 @@
 package br.com.hospital.entidades;
 
+import br.com.hospital.exceptions.ConsultaException;
 import br.com.hospital.interfaces.Agendavel;
 import br.com.hospital.interfaces.Identificavel;
 import br.com.hospital.interfaces.Validavel;
@@ -12,7 +13,20 @@ public class Consulta implements Identificavel, Agendavel, Validavel {
     private String dataHora;
     private String descricao;
 
-    public Consulta(String id, Paciente paciente, Medico medico, String dataHora, String descricao) {
+    public Consulta(String id, Paciente paciente, Medico medico, String dataHora, String descricao) throws ConsultaException {
+
+        if (paciente == null || !paciente.validar()){
+            throw new ConsultaException("Paciente inválido");
+        }
+
+        if (medico == null || !medico.validar()){
+            throw new ConsultaException("Médico inválido");
+        }
+
+        if (dataHora == null || !dataHora.isBlank()){
+            throw new ConsultaException("Data e hora inválidas");
+        }
+
         this.id = id;
         this.paciente = paciente;
         this.medico = medico;

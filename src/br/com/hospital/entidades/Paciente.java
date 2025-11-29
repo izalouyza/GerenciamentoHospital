@@ -1,13 +1,24 @@
 package br.com.hospital.entidades;
 
+import br.com.hospital.exceptions.PacienteException;
+import br.com.hospital.exceptions.PessoaException;
 import br.com.hospital.interfaces.Validavel;
 
 public class Paciente extends Pessoa implements Validavel {
     private int idade;
     private String historicoClinico;
 
-    public Paciente(int id, String nome, String cpf, String telefone, String email, String endereco,String senha, String nivelAcesso, int idade, String historicoClinico) {
+    public Paciente(int id, String nome, String cpf, String telefone, String email, String endereco,String senha, String nivelAcesso, int idade, String historicoClinico) throws PacienteException, PessoaException {
         super(id, nome, cpf, telefone, email, endereco,senha,nivelAcesso);
+
+        if (idade <= 0 || idade >= 120) {
+            throw new PacienteException("Idade inválida!");
+        }
+
+        if (historicoClinico == null || historicoClinico.isBlank()) {
+            throw new PacienteException("Histórico Clínico não pode ser vazio!");
+        }
+
         this.idade = idade;
         this.historicoClinico = historicoClinico;
     }

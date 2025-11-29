@@ -1,5 +1,7 @@
 package br.com.hospital.entidades;
 
+import br.com.hospital.exceptions.MedicoException;
+import br.com.hospital.exceptions.PessoaException;
 import br.com.hospital.interfaces.Validavel;
 
 public class Medico extends Pessoa implements Validavel {
@@ -7,8 +9,17 @@ public class Medico extends Pessoa implements Validavel {
     private String especialidade;
 
     public Medico(int id, String nome, String cpf, String telefone, String email, String endereco,String senha, String nivelAcesso,
-                  String crm, String especialidade) {
+                  String crm, String especialidade) throws MedicoException, PessoaException {
         super(id, nome, cpf, telefone, email, endereco,senha, nivelAcesso);
+
+        if (crm==null || crm.length() < 4) {
+            throw new MedicoException("CRM inválido!");
+        }
+
+        if (especialidade==null || especialidade.isBlank()) {
+            throw new MedicoException("Especialidade não pode Ser vazia!");
+        }
+
         this.crm = crm;
         this.especialidade = especialidade;
     }

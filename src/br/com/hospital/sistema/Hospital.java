@@ -2,6 +2,7 @@ package br.com.hospital.sistema;
 
 import br.com.hospital.entidades.Medico;
 import br.com.hospital.entidades.Pessoa;
+import br.com.hospital.exceptions.HospitalException;
 import br.com.hospital.interfaces.Gerenciavel;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class Hospital implements Gerenciavel<Pessoa> {
     }
 
     @Override
-    public Pessoa buscar(String identificador) {
+    public Pessoa buscar(String identificador) throws HospitalException {
         for (Pessoa pessoaBuscar : pessoasRegistradas) {
             if (pessoaBuscar.getCpf().equals(identificador)) {
                 pessoaBuscar.exibirInformacoes();
@@ -44,22 +45,30 @@ public class Hospital implements Gerenciavel<Pessoa> {
                 }
             }
         }
-        return null;
+
+        throw new HospitalException("Pessoa não encontrada!");
     }
 
     @Override
-    public boolean editar(String identificador, Pessoa novoElemento) {
+    public boolean editar(String identificador, Pessoa novoElemento) throws HospitalException{
         for (int i = 0; i < pessoasRegistradas.size(); i++) {
             if (pessoasRegistradas.get(i).getCpf().equals(identificador)) {
                 pessoasRegistradas.set(i, novoElemento);
                 return true;
             }
         }
-        return false;
+
+        throw new HospitalException("Erro ao editar! Pessoa não existe!");
     }
 
     @Override
-    public boolean remover(String identificador) {
-        return pessoasRegistradas.removeIf(pessoaRemovivel -> pessoaRemovivel.getCpf().equals(identificador));
+    public boolean remover(String identificador) throws HospitalException {
+        boolean removido = pessoasRegistradas.removeIf(p -> p.getCpf().equals(identificador));
+
+        if (!removido) {
+            throw new HospitalException("Erro ao remover! Pessoa não encontrada!");
+        }
+
+        return true;
     }
 }
